@@ -1,0 +1,40 @@
+address,name,notes
+0x0200,reset_entry,"C runtime startup: stack/SPLIM, data init from 0x17CA, calls main at 0x1AB8"
+0x0222,psv_init_helper,compiler startup helper for PSV
+0x0232,data_init_helper,compiler startup table-copy/clear helper
+0x0532,filter_clear_helper,clears filter descriptor pointed buffers
+0x0548,init_filter0,descriptor C28 points 0x800..0xFF2; coefficients 0x7EB7/0x87AE
+0x0578,init_filter1,descriptor C32 points 0x806..0xFF8; coefficients 0x428F/0xC666
+0x05A4,init_pwm1_defaults,"PWMCON1/IOCON1/FCLCON1/TRGCON1, PHASE1=0x19D5, PDC1=0"
+0x05EA,control_reset,calls filter and PWM init; clears control flags; period ref=0x6E20
+0x0604,start_pwm_soft,"sets soft-start period, clears filter states, enables IOCON1 bit7"
+0x064A,stop_pwm_soft,clears duty/PDC1 and PWM-active flags; sets stopped/change status
+0x0678,unknown_filter_update,called by housekeeping before envelope update; likely IIR helper around C28
+0x09AA,control_update,run-request/input-valid gating and LATB bit3 output
+0x0A5E,line_target_update,"start/stop gate, relay/LED status, inhibit flags"
+0x0B14,housekeeping,"zero-cross/period average, setpoint filters, CMPDAC update"
+0x0CEE,active_pwm_control,"large active loop: region flags, period target/ramp, PWM enable"
+0x100C,comparator1_isr,clears IFS1 bit2
+0x1014,send_status_frame,UART status frame: 0xEA + status + checksum
+0x1060,host_write_handler,"writes host command window at 0xBC8+addr, handles cmd 0x20/0x28"
+0x10FC,uart_rx_isr,"UART protocol state machine: start 0xEA, ACK 0x18, checksum"
+0x1454,init_uart,"PPS mapping, U1BRG=0x1A, flags defaults"
+0x14C0,adc_pair0_isr,"reads ADCBUF0/1 delta, moving average, line counter"
+0x156A,adc_pair1_isr,"reads ADCBUF2/3, updates line estimate, computes PDC1/TRIG1"
+0x1AB8,main,initializes peripherals and runs state machine loop
+0x1D34,wait_ticks,busy wait against Timer1-maintained C64 counter
+0x1D4A,timer1_isr,"timebase, debounce, state/ramp counters, comparator reenabling"
+0x1F5C,math_housekeeping,32-bit rolling RMS/energy math
+0x201E,adc_pair2_isr,"reads ADCBUF4/5, rolling square/integral values"
+0x2156,init_clock,PLL/FRC switch and auxiliary clock enable
+0x21B6,init_comparator1,"CMPCON1/CMPDAC1=0x3FF, interrupt enable"
+0x21E0,init_gpio,"LATB=0, TRISB=0xA6D3, RA3/RA4 outputs"
+0x21FE,init_timer1,"PR1=0x3415, T1 interrupt enable, T1ON"
+0x220C,init_adc,"ADPCFG=0, ADCPC0/1 triggers, ADC interrupts"
+0x22AC,adc_pair3_isr,"reads ADCBUF6, current-limit/filter coefficient changes"
+0x2374,status_side_effects,side effects for command addr 0x20; output gate latch
+0x23B6,trap_address_error?,trap handler clears INTCON1 bit and disables PWM then loops
+0x23BE,trap_stack_error?,trap handler clears INTCON1 bit and disables PWM then loops
+0x23C6,trap_math_error?,trap handler clears INTCON1 bit and disables PWM then loops
+0x23CE,trap_default?,trap handler clears INTCON1 bit and disables PWM then loops
+0x23EE,reset_handler,RESET instruction

@@ -1,0 +1,23 @@
+	F80000	FBS	000F	-	-   	-	-
+			1	BWRP	WRPROTECT_OFF   	Boot Segment Write Protect	Boot Segment may be written
+			7	BSS	NO_FLASH   	Boot Segment Program Flash Code Protection	No Boot program Flash segment
+	F80004	FGS	0006	-	-   	-	-
+			0	GWRP	ON   	General Code Segment Write Protect	General Segment is write protected
+			3	GSS	OFF   	General Segment Code Protection	User program memory is not code-protected
+	F80006	FOSCSEL	0080	-	-   	-	-
+			0	FNOSC	FRC   	Oscillator Source Selection	Internal Fast RC (FRC) oscillator
+			1	IESO	ON   	Internal External Switch Over Mode	Start up device with FRC, then automatically switch to user-selected oscillator source
+	F80008	FOSC	0067	-	-   	-	-
+			3	POSCMD	NONE   	Primary Oscillator Source	Primary oscillator disabled
+			1	OSCIOFNC	OFF   	OSC2 Pin Function	OSC2 is clock output
+			1	IOL1WAY	ON   	Peripheral Pin Select Configuration	Allow only one reconfiguration
+			1	FCKSM	CSECMD   	Clock Switching and Monitor	Clock switching is enabled, Fail-Safe Clock Monitor is Disabled
+	F8000A	FWDT	005F	-	-   	-	-
+			F	WDTPOST	PS32768   	Watchdog Timer Postscaler	1:32,768
+			1	WDTPRE	PR128   	WDT Prescaler	1:128
+			1	WINDIS	OFF   	Watchdog Timer Window	Watchdog Timer in Non-Window mode
+			0	FWDTEN	OFF   	Watchdog Timer Enable	Watchdog timer enabled/disabled by user software
+	F8000C	FPOR	F	FPWRT	PWR128   	POR Timer Value	128ms
+	F8000E	FICD	00C3	-	-   	-	-
+			3	ICS	PGD1   	Comm Channel Select	Communicate on PGC1/EMUC1 and PGD1/EMUD1
+			0	JTAGEN	OFF   	JTAG Port Enable	JTAG is disabled

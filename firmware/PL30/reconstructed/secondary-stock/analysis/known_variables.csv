@@ -1,0 +1,55 @@
+address_or_range,name,width,role,confidence
+0x0083,G_GLOBAL_INT_FLAGS,8,"Global interrupt/control flag byte; app main sets bit7, high duplicate clears then initializes",high
+0x0800..0x0A4B,APP_CONTROL_RAM,16,Cleared control/filter/fault counter area from C startup table,high
+0x080C,SEC_ADC_COUNTERS_BASE,16,Large cleared control-area region; many fault/debounce counters live here,medium
+0x0816,SEC_FAULT_COUNTER_A,16,Timer/main fault threshold counter used by 0x3DD2,medium
+0x081C,SEC_FAULT_COUNTER_B,16,Timer/main fault threshold counter used by 0x3E10,medium
+0x084E,SEC_RAMP_OR_ENABLE_COUNTER,16,Cleared during shutdown-state cleanup; read during state 3 gating,medium
+0x085E,SEC_CONTROL_FLAGS_A,16,"Soft-start/control-loop status bits, checked by PWM regulation routines",medium
+0x085F,SEC_CONTROL_FLAGS_A_H,8,Upper-byte flags for secondary loop events,medium
+0x086A..0x087A,I2C1_SLAVE_STATE,mixed,I2C1 command/state/checksum window used by slave ISR,medium
+0x088A,SEC_STATUS_LATCH_88A,16,"Comms/output/fault latch, bit0/bit4 used in state transitions",medium
+0x088C,SEC_STATUS_LATCH_88C,16,Cleared by runtime shutdown cleanup,medium
+0x0986,UART_REMOTE_STATUS_BASE,16,Contiguous register/status window written by UART command parser,medium
+0x09A6,UART_RETRY_OR_TX_STATE,16,Initialized to 5 by UART init; bit2 triggers protocol event,medium
+0x09B2,UART_FRAME_STATE,16,Transmit/receive protocol state set by frame transmit helpers,high
+0x09B6,UART_LAST_COMMAND,16,Last command byte/word associated with UART protocol frames,high
+0x09BE,UART_LAST_VALUE,16,Parameter byte/word for 0x50 UART frames,high
+0x09CC,UART_TIMEOUT_TICK,16,Timer1-driven protocol timeout counter,high
+0x09D2,UART_FLAGS,16,"TX/RX protocol flags, bits set/cleared by send and receive helpers",high
+0x09D4,SEC_POWER_FLAGS,16,Fault/output permission flags; tested/set/cleared throughout protection code,high
+0x09D5,SEC_POWER_FLAGS_H,8,Upper-byte fault/event flags set by ADC ISRs,medium
+0x09D6,SEC_PWM_ENABLE_FLAGS,16,"Primary PWM/output enable latch; bit0 set during PWM3 enable, masked in shutdown cleanup",high
+0x09F0,SEC_PWM6_LOOP_FLAGS,16,"PWM6 loop flags, bit5 used by ADC/PWM control update",medium
+0x09FE,SEC_OUTPUT_HOLD_FLAGS,16,Output hold/interlock flags; bit1/bit2 cleared by PWM3 startup,medium
+0x0A00,ADC_VBUS_RAW_OR_FAST,16,ADCBUF2 sample copied by ADC ISR 0x3858,medium
+0x0A02,ADC_VBUS_FILTERED,16,Filtered value derived from 0x0A00; used in state and PWM control,medium
+0x0A14,ADC_AUX8_RAW,16,ADCBUF8 copied by ADC ISR 0x4162,medium
+0x0A16,ADC_AUX4_RAW,16,ADCBUF4 copied by ADC ISR 0x4162,medium
+0x0A18,ADC_AUX_VALID_OR_MODE,16,Derived comparator/window result used by I2C1 address selection,medium
+0x0A1A,ADC_AUX8_FILTERED,16,Filtered 0x0A14 used in output/fault evaluation,medium
+0x0A1C,ADC_AUX9_RAW,16,ADCBUF9 copied by ADC ISR 0x4162,medium
+0x0A1E,ADC_AUX9_FILTERED,16,Filtered 0x0A1C used against threshold 0x033E,medium
+0x0A30,TICK_COUNTER,16,Timer1-driven tick counter used by wait_ticks(),high
+0x0A32,BOOT_OR_BOARD_FLAGS,16,Boot/board-mode flags; bit1 influences PWM3/GPIO setup,medium
+0x0A3C..0x0A44,BOOT_FLASH_ADDRESS_STATE,mixed,Bootloader/programming address and action flags,medium
+0x0A40,BOOT_LOW_IMAGE_MARKER,16,Must equal 0x003C for bootloader to accept low app,medium
+0x0AA8,BOOT_LOW_IMAGE_VERSION_OR_TAG,16,Low-image metadata copied from flash 0x4FFC,medium
+0x0AAA,BOOT_LOW_IMAGE_CHECK_FIELD,16,Low-image metadata/check field copied from flash 0x5000,medium
+0x0B94,BOOT_VALID_FLAGS,16,Bootloader valid-image flags; bit1 must be set to jump to 0x0400,medium
+0x0B9A,BOOT_MARKER_BYTE,8,Flash marker read from 0x5C00 by bootloader,medium
+0x0CD0,I2C1_ADDRESS_OR_BOARD_ID,16,Cleared init region; I2C1 address selection uses this plus port pins,medium
+0x0CE2..0x0CE8,I2C_PAYLOAD_WINDOW,mixed,Shared I2C command payload/status bytes,medium
+0x0D50..0x0D64,CALIBRATION_BLOCK_1,16,Calibration values loaded from external config/EEPROM,medium
+0x0D66,CALIBRATION_DIRTY_OR_VALID,16,Runtime config refresh gating flag,medium
+0x0D68,CALIBRATION_FLAGS,8,"Flag byte, bit3 set by helper 0x0736/0x6336",medium
+0x0D6A..0x0D7B,CALIBRATION_BLOCK_2,mixed,Additional config/calibration bytes loaded from EEPROM,medium
+0x0D96..0x0DCC,I2C2_MASTER_STATE,mixed,I2C2/EEPROM transaction state; DCA flag bits drive 0x3F46,medium
+0x0DD6..0x0E01,POWER_DEFAULTS_BLOCK,16,Startup constants for secondary regulation/fault thresholds,medium
+0x0E1E,APP_STATE,16,"Main state machine: 1 idle, 2 pending/run request, 3 ramp/run, 4 shutdown/boot handoff",high
+0x0E54,ADC_CURRENT_FILTERED_A,16,C-startup initialized 0x03FF; filtered from ADCBUF6/7 ISR,medium
+0x0E56,ADC_CURRENT_FILTERED_B,16,Filtered from ADCBUF6/7 ISR,medium
+0x0E5A,I2C1_ADDRESS_DELAY_COUNTER,16,Compared to 0x01F3 in I2C1 address selection,medium
+0x0EAA,ADC_CURRENT_RAW_A,16,ADCBUF6 copied by ADC ISR 0x2BD0,medium
+0x0EAC,ADC_CURRENT_RAW_B,16,ADCBUF7 copied by ADC ISR 0x2BD0,medium
+0x1FE4,SPLIM_INITIAL,16,Application startup sets SPLIM=0x1FE4,high

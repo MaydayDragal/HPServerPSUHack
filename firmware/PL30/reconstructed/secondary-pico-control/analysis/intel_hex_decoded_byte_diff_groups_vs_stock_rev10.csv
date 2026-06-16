@@ -1,0 +1,121 @@
+start_byte_addr,end_byte_addr,byte_count,stock_bytes,pico_bytes,program_addr_hint,interpretation
+0x00001A70,0x00001A71,2,05 01,F6 26,0x0D38,Low image I2C1 command-table entry for wire register 0x3E/logical 0x1F now branches to the CC-command write handler at 0x5B26.
+0x00001A80,0x00001A81,2,01 01,EF 26,0x0D40,Low image I2C1 command-table entry for wire register 0x42/logical 0x21 now branches to the status/control write handler at 0x5B20.
+0x000057AC,0x000057AE,3,61 1A 80,AC 17 07,0x2BD6,"Low image ADC current-sample path is replaced with RCALL 0x5B30, which substitutes synthetic current ADC words based on the external output-enable bit."
+0x000057B0,0x000057B2,3,51 75 88,00 00 00,0x2BD8,NOP padding after 0x2BD6 hook; original moved ADCBUF6 to RAM 0x0EAA.
+0x000057B4,0x000057B6,3,72 1A 80,00 00 00,0x2BDA,NOP padding after 0x2BD6 hook; original moved ADCBUF7 to W2.
+0x000057B8,0x000057BA,3,62 75 88,00 00 00,0x2BDC,NOP padding after 0x2BD6 hook; original moved W2 to RAM 0x0EAC.
+0x000068C4,0x000068C6,3,70 66 80,76 13 07,0x3462,"Low image current-limit/mode-table application path is replaced with RCALL 0x5B50, which clamps and applies an externally written CC limit."
+0x000068C8,0x000068CA,3,60 66 88,00 00 00,0x3464,NOP padding after 0x3462 hook; original copied 0x0CCE to 0x0CCC.
+0x000070B8,0x000070BA,3,21 1A 80,51 11 07,0x385C,Low image output-voltage ADC read uses the 0x5B00 Q15 OVP scaling helper instead of raw ADCBUF2.
+0x0000B600,0x0000B602,3,FF FF FF,00 00 F8,0x5B00,Low image inserted OVP scaling helper: W1 = (ADCBUF2 * 0x6AC2) >> 15.
+0x0000B604,0x0000B606,3,FF FF FF,04 00 F8,0x5B02,Unclassified program-memory change.
+0x0000B608,0x0000B60A,3,FF FF FF,06 00 F8,0x5B04,Unclassified program-memory change.
+0x0000B60C,0x0000B60E,3,FF FF FF,20 1A 80,0x5B06,Unclassified program-memory change.
+0x0000B610,0x0000B612,3,FF FF FF,22 AC 26,0x5B08,Unclassified program-memory change.
+0x0000B614,0x0000B616,3,FF FF FF,02 00 B8,0x5B0A,Unclassified program-memory change.
+0x0000B618,0x0000B61A,3,FF FF FF,C1 08 DD,0x5B0C,Unclassified program-memory change.
+0x0000B61C,0x0000B61E,3,FF FF FF,4F 00 DE,0x5B0E,Unclassified program-memory change.
+0x0000B620,0x0000B622,3,FF FF FF,81 00 70,0x5B10,Unclassified program-memory change.
+0x0000B624,0x0000B626,3,FF FF FF,06 00 F9,0x5B12,Unclassified program-memory change.
+0x0000B628,0x0000B62A,3,FF FF FF,04 00 F9,0x5B14,Unclassified program-memory change.
+0x0000B62C,0x0000B62E,3,FF FF FF,00 00 F9,0x5B16,Unclassified program-memory change.
+0x0000B630,0x0000B632,3,FF FF FF,00 00 06,0x5B18,Unclassified program-memory change.
+0x0000B640,0x0000B642,3,FF FF FF,60 43 80,0x5B20,Low image inserted status/control write handler: RAM 0x08C8 = received I2C word from 0x086C.
+0x0000B644,0x0000B646,3,FF FF FF,40 46 88,0x5B22,Unclassified program-memory change.
+0x0000B648,0x0000B64A,3,FF FF FF,21 DA 37,0x5B24,Unclassified program-memory change.
+0x0000B64C,0x0000B64E,3,FF FF FF,60 43 80,0x5B26,Low image inserted CC-value write handler: RAM 0x08C4 = received I2C word from 0x086C.
+0x0000B650,0x0000B652,3,FF FF FF,20 46 88,0x5B28,Unclassified program-memory change.
+0x0000B654,0x0000B656,3,FF FF FF,1E DA 37,0x5B2A,Unclassified program-memory change.
+0x0000B660,0x0000B662,3,FF FF FF,C9 E8 AB,0x5B30,Low image inserted current-sample substitute helper for output-enable controlled ADC/current words.
+0x0000B664,0x0000B666,3,FF FF FF,05 00 3A,0x5B32,Unclassified program-memory change.
+0x0000B668,0x0000B66A,3,FF FF FF,31 3A 20,0x5B34,Unclassified program-memory change.
+0x0000B66C,0x0000B66E,3,FF FF FF,51 75 88,0x5B36,Unclassified program-memory change.
+0x0000B670,0x0000B672,3,FF FF FF,02 00 20,0x5B38,Unclassified program-memory change.
+0x0000B674,0x0000B676,3,FF FF FF,62 75 88,0x5B3A,Unclassified program-memory change.
+0x0000B678,0x0000B67A,3,FF FF FF,04 00 37,0x5B3C,Unclassified program-memory change.
+0x0000B67C,0x0000B67E,3,FF FF FF,E1 0D 20,0x5B3E,Unclassified program-memory change.
+0x0000B680,0x0000B682,3,FF FF FF,51 75 88,0x5B40,Unclassified program-memory change.
+0x0000B684,0x0000B686,3,FF FF FF,C2 0C 20,0x5B42,Unclassified program-memory change.
+0x0000B688,0x0000B68A,3,FF FF FF,62 75 88,0x5B44,Unclassified program-memory change.
+0x0000B68C,0x0000B68E,3,FF FF FF,00 00 06,0x5B46,Unclassified program-memory change.
+0x0000B6A0,0x0000B6A2,3,FF FF FF,C8 08 AB,0x5B50,"Low image inserted CC-limit clamp/apply helper. If RAM 0x08C8 bit0 is set, RAM 0x08C4 is bounded by 0x0500 and 0x0E50, then written into 0x0E50."
+0x0000B6A4,0x0000B6A6,3,FF FF FF,0D 00 32,0x5B52,Unclassified program-memory change.
+0x0000B6A8,0x0000B6AA,3,FF FF FF,20 46 80,0x5B54,Unclassified program-memory change.
+0x0000B6AC,0x0000B6AE,3,FF FF FF,01 50 20,0x5B56,Unclassified program-memory change.
+0x0000B6B0,0x0000B6B2,3,FF FF FF,81 0F 50,0x5B58,Unclassified program-memory change.
+0x0000B6B4,0x0000B6B6,3,FF FF FF,01 00 3E,0x5B5A,Unclassified program-memory change.
+0x0000B6B8,0x0000B6BA,3,FF FF FF,21 46 88,0x5B5C,Unclassified program-memory change.
+0x0000B6BC,0x0000B6BE,3,FF FF FF,80 72 80,0x5B5E,Unclassified program-memory change.
+0x0000B6C0,0x0000B6C2,3,FF FF FF,21 46 80,0x5B60,Unclassified program-memory change.
+0x0000B6C4,0x0000B6C6,3,FF FF FF,81 0F 50,0x5B62,Unclassified program-memory change.
+0x0000B6C8,0x0000B6CA,3,FF FF FF,01 00 3E,0x5B64,Unclassified program-memory change.
+0x0000B6CC,0x0000B6CE,3,FF FF FF,20 46 88,0x5B66,Unclassified program-memory change.
+0x0000B6D0,0x0000B6D2,3,FF FF FF,20 46 80,0x5B68,Unclassified program-memory change.
+0x0000B6D4,0x0000B6D6,3,FF FF FF,80 72 88,0x5B6A,Unclassified program-memory change.
+0x0000B6D8,0x0000B6DA,3,FF FF FF,02 00 37,0x5B6C,Unclassified program-memory change.
+0x0000B6DC,0x0000B6DE,3,FF FF FF,80 72 80,0x5B6E,Unclassified program-memory change.
+0x0000B6E0,0x0000B6E2,3,FF FF FF,00 00 00,0x5B70,Unclassified program-memory change.
+0x0000B6E4,0x0000B6E6,3,FF FF FF,70 66 80,0x5B72,Unclassified program-memory change.
+0x0000B6E8,0x0000B6EA,3,FF FF FF,60 66 88,0x5B74,Unclassified program-memory change.
+0x0000B6EC,0x0000B6EE,3,FF FF FF,00 00 06,0x5B76,Unclassified program-memory change.
+0x0000D270,0x0000D271,2,05 01,93 1C,0x6938,High mirror I2C1 command-table entry for wire register 0x3E/logical 0x1F now branches to 0xA260.
+0x0000D280,0x0000D281,2,01 01,87 1C,0x6940,High mirror I2C1 command-table entry for wire register 0x42/logical 0x21 now branches to 0xA250.
+0x00010FAC,0x00010FAE,3,61 1A 80,4C 0D 07,0x87D6,High mirror current-sample path is replaced with RCALL 0xA270.
+0x00010FB0,0x00010FB2,3,51 75 88,00 00 00,0x87D8,High mirror NOP padding after 0x87D6 hook.
+0x00010FB4,0x00010FB6,3,72 1A 80,00 00 00,0x87DA,High mirror NOP padding after 0x87D6 hook.
+0x00010FB8,0x00010FBA,3,62 75 88,00 00 00,0x87DC,High mirror NOP padding after 0x87D6 hook.
+0x000120C4,0x000120C6,3,70 66 80,1E 09 07,0x9062,High mirror current-limit/mode-table application path is replaced with RCALL 0xA2A0.
+0x000120C8,0x000120CA,3,60 66 88,00 00 00,0x9064,High mirror NOP padding after 0x9062 hook.
+0x000128B8,0x000128BA,3,21 1A 80,E1 06 07,0x945C,High mirror output-voltage ADC read uses the 0xA220 Q15 OVP scaling helper instead of raw ADCBUF2.
+0x00014440,0x00014442,3,FF FF FF,00 00 F8,0xA220,High mirror inserted OVP scaling helper: W1 = (ADCBUF2 * 0x6AC2) >> 15.
+0x00014444,0x00014446,3,FF FF FF,04 00 F8,0xA222,Unclassified program-memory change.
+0x00014448,0x0001444A,3,FF FF FF,06 00 F8,0xA224,Unclassified program-memory change.
+0x0001444C,0x0001444E,3,FF FF FF,20 1A 80,0xA226,Unclassified program-memory change.
+0x00014450,0x00014452,3,FF FF FF,22 AC 26,0xA228,Unclassified program-memory change.
+0x00014454,0x00014456,3,FF FF FF,02 00 B8,0xA22A,Unclassified program-memory change.
+0x00014458,0x0001445A,3,FF FF FF,C1 08 DD,0xA22C,Unclassified program-memory change.
+0x0001445C,0x0001445E,3,FF FF FF,4F 00 DE,0xA22E,Unclassified program-memory change.
+0x00014460,0x00014462,3,FF FF FF,81 00 70,0xA230,Unclassified program-memory change.
+0x00014464,0x00014466,3,FF FF FF,06 00 F9,0xA232,Unclassified program-memory change.
+0x00014468,0x0001446A,3,FF FF FF,04 00 F9,0xA234,Unclassified program-memory change.
+0x0001446C,0x0001446E,3,FF FF FF,00 00 F9,0xA236,Unclassified program-memory change.
+0x00014470,0x00014472,3,FF FF FF,00 00 06,0xA238,Unclassified program-memory change.
+0x000144A0,0x000144A2,3,FF FF FF,60 43 80,0xA250,High mirror inserted status/control write handler: RAM 0x08C8 = received I2C word from 0x086C.
+0x000144A4,0x000144A6,3,FF FF FF,40 46 88,0xA252,Unclassified program-memory change.
+0x000144A8,0x000144AA,3,FF FF FF,89 E4 37,0xA254,Unclassified program-memory change.
+0x000144C0,0x000144C2,3,FF FF FF,60 43 80,0xA260,High mirror inserted CC-value write handler: RAM 0x08C4 = received I2C word from 0x086C.
+0x000144C4,0x000144C6,3,FF FF FF,20 46 88,0xA262,Unclassified program-memory change.
+0x000144C8,0x000144CA,3,FF FF FF,81 E4 37,0xA264,Unclassified program-memory change.
+0x000144E0,0x000144E2,3,FF FF FF,C9 E8 AB,0xA270,High mirror inserted current-sample substitute helper.
+0x000144E4,0x000144E6,3,FF FF FF,05 00 3A,0xA272,Unclassified program-memory change.
+0x000144E8,0x000144EA,3,FF FF FF,31 3A 20,0xA274,Unclassified program-memory change.
+0x000144EC,0x000144EE,3,FF FF FF,51 75 88,0xA276,Unclassified program-memory change.
+0x000144F0,0x000144F2,3,FF FF FF,02 00 20,0xA278,Unclassified program-memory change.
+0x000144F4,0x000144F6,3,FF FF FF,62 75 88,0xA27A,Unclassified program-memory change.
+0x000144F8,0x000144FA,3,FF FF FF,04 00 37,0xA27C,Unclassified program-memory change.
+0x000144FC,0x000144FE,3,FF FF FF,E1 0D 20,0xA27E,Unclassified program-memory change.
+0x00014500,0x00014502,3,FF FF FF,51 75 88,0xA280,Unclassified program-memory change.
+0x00014504,0x00014506,3,FF FF FF,C2 0C 20,0xA282,Unclassified program-memory change.
+0x00014508,0x0001450A,3,FF FF FF,62 75 88,0xA284,Unclassified program-memory change.
+0x0001450C,0x0001450E,3,FF FF FF,00 00 06,0xA286,Unclassified program-memory change.
+0x00014540,0x00014542,3,FF FF FF,C8 08 AB,0xA2A0,High mirror inserted CC-limit clamp/apply helper.
+0x00014544,0x00014546,3,FF FF FF,0D 00 32,0xA2A2,Unclassified program-memory change.
+0x00014548,0x0001454A,3,FF FF FF,20 46 80,0xA2A4,Unclassified program-memory change.
+0x0001454C,0x0001454E,3,FF FF FF,01 50 20,0xA2A6,Unclassified program-memory change.
+0x00014550,0x00014552,3,FF FF FF,81 0F 50,0xA2A8,Unclassified program-memory change.
+0x00014554,0x00014556,3,FF FF FF,01 00 3E,0xA2AA,Unclassified program-memory change.
+0x00014558,0x0001455A,3,FF FF FF,21 46 88,0xA2AC,Unclassified program-memory change.
+0x0001455C,0x0001455E,3,FF FF FF,80 72 80,0xA2AE,Unclassified program-memory change.
+0x00014560,0x00014562,3,FF FF FF,21 46 80,0xA2B0,Unclassified program-memory change.
+0x00014564,0x00014566,3,FF FF FF,81 0F 50,0xA2B2,Unclassified program-memory change.
+0x00014568,0x0001456A,3,FF FF FF,01 00 3E,0xA2B4,Unclassified program-memory change.
+0x0001456C,0x0001456E,3,FF FF FF,20 46 88,0xA2B6,Unclassified program-memory change.
+0x00014570,0x00014572,3,FF FF FF,20 46 80,0xA2B8,Unclassified program-memory change.
+0x00014574,0x00014576,3,FF FF FF,80 72 88,0xA2BA,Unclassified program-memory change.
+0x00014578,0x0001457A,3,FF FF FF,02 00 37,0xA2BC,Unclassified program-memory change.
+0x0001457C,0x0001457E,3,FF FF FF,80 72 80,0xA2BE,Unclassified program-memory change.
+0x00014580,0x00014582,3,FF FF FF,00 00 00,0xA2C0,Unclassified program-memory change.
+0x00014584,0x00014586,3,FF FF FF,70 66 80,0xA2C2,Unclassified program-memory change.
+0x00014588,0x0001458A,3,FF FF FF,60 66 88,0xA2C4,Unclassified program-memory change.
+0x0001458C,0x0001458E,3,FF FF FF,00 00 06,0xA2C6,Unclassified program-memory change.

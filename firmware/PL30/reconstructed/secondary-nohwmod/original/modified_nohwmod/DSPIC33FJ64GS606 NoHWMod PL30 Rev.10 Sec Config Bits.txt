@@ -1,0 +1,30 @@
+	F80000	FBS	000F	-	-   	-	-
+			1	BWRP	WRPROTECT_OFF   	Boot Segment Write Protect	Boot Segment may be written
+			7	BSS	NO_FLASH   	Boot Segment Program Flash Code Protection	No Boot program Flash segment
+	F80004	FGS	0007	-	-   	-	-
+			1	GWRP	OFF   	General Code Segment Write Protect	General Segment may be written
+			3	GSS	OFF   	General Segment Code Protection	General Segment Code protect is disabled
+	F80006	FOSCSEL	0080	-	-   	-	-
+			0	FNOSC	FRC   	Oscillator Source Selection	Internal Fast RC (FRC)
+			1	IESO	ON   	Internal External Switch Over Mode	Start up device with FRC, then switch to user-selected oscillator source
+	F80008	FOSC	0043	-	-   	-	-
+			3	POSCMD	NONE   	Primary Oscillator Source	Primary Oscillator disabled
+			0	OSCIOFNC	ON   	OSC2 Pin Function	OSC2 is general purpose digital I/O pin
+			1	FCKSM	CSECMD   	Clock Switching Mode bits	Clock switching is enabled,Fail-safe Clock Monitor is disabled
+	F8000A	FWDT	007F	-	-   	-	-
+			F	WDTPOST	PS32768   	Watchdog Timer Postscaler	1:32,768
+			1	WDTPRE	PR128   	WDT Prescaler	1:128
+			1	WINDIS	OFF   	Watchdog Timer Window	Watchdog Timer in Non-Window mode
+			0	FWDTEN	OFF   	Watchdog Timer Enable	Watchdog timer enabled/disabled by user software
+	F8000C	FPOR	0067	-	-   	-	-
+			7	FPWRT	PWR128   	POR Timer Value	128ms
+			1	ALTSS1	ON   	Enable Alternate SS1 pin bit	SS1A is selected as the I/O pin for SPI1
+			1	ALTQIO	OFF   	Enable Alternate QEI1 pin bit	QEA1, QEB1, INDX1 are selected as inputs to QEI1
+	F8000E	FICD	00C2	-	-   	-	-
+			2	ICS	PGD2   	Comm Channel Select	Communicate on PGC2/EMUC2 and PGD2/EMUD2
+			0	JTAGEN	OFF   	JTAG Port Enable	JTAG is disabled
+	F80010	FCMP	003F	-	-   	-	-
+			3	HYST0	HYST45   	Even Comparator Hysteresis Select	45 mV Hysteresis
+			1	CMPPOL0	POL_FALL   	Comparator Hysteresis Polarity (for even numbered comparators)	Hysteresis is applied to falling edge
+			3	HYST1	HYST45   	Odd Comparator Hysteresis Select	45 mV Hysteresis
+			1	CMPPOL1	POL_FALL   	Comparator Hysteresis Polarity (for odd numbered comparators)	Hysteresis is applied to falling edge

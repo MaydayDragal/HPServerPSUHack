@@ -126,6 +126,17 @@ C1,C2,C4 Filter capacitors, GAIN=400.
 **PL30 Rev12 AGM Battery Charger 20 A Firmware**  
 * [Download AGM Battery Charger 20 A CC](firmware/PL30/12/Patch/DSPIC33FJ64GS606_CC20.hex)
 
+### PL30 Firmware Reconstructions (Primary + Secondary)
+
+Source-level XC16/MPLAB-style reconstructions of both PL30 controllers — the
+primary dsPIC33FJ16GS502 and the secondary dsPIC33FJ64GS606 — covering the stock
+Rev.10 firmware plus the 20 A CC, NoHWMod, and Pico-control variants. The primary
+package decodes the host UART protocol (`0xEA + status + checksum` status frames,
+`0x05`/`0x50` command frames, `0x18` ACK), and the Pico package documents the
+external I²C control registers (`0x1F` CC setpoint, `0x21` status/control).
+
+* [PL30 Reconstructed Firmware](firmware/PL30/reconstructed)
+
 ### PL30 Analog/Digital Control Scheme ACMC
 ![alt text][image37]
 The average current feedback loop is established by cascading a dedicated voltage and current loop compensator, each tied to its respective feedback signal. Just like in peak current mode control, the outer voltage loop compensator output provides the reference for the inner current loop, where a second compensation filter adjusts the average inductor current by adjusting the modulated switch node control signal.

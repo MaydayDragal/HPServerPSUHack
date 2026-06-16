@@ -1,0 +1,3 @@
+addr,name_rev06,value_rev06,name_rev10,value_rev10,notes
+0x002E,PCL,0x5A5C,PCL,0x5A5A,runtime/debug snapshot only; not a program-memory/config difference
+0x0042,SR,0x010B,SR,0x0109,runtime/debug snapshot only; not a program-memory/config difference

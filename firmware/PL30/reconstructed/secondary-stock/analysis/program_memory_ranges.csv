@@ -1,0 +1,8 @@
+start_addr,end_addr,words,classification
+0x0000,0x00FE,128,normal interrupt vector table
+0x0104,0x01FE,126,alternate interrupt vector table
+0x0400,0x4500,8321,low application image
+0x450C,0x460C,129,low app trap/data-init table
+0x4FF8,0x5ADA,1394,bootloader/update selector
+0x6000,0xA100,8321,high application image
+0xA10C,0xA20C,129,high app trap/data-init table

@@ -1,0 +1,200 @@
+#ifndef PL30SEC_SYMBOLS_H
+#define PL30SEC_SYMBOLS_H
+
+#include <stdint.h>
+#include <stdbool.h>
+
+#define PL30SEC_REG16(addr) (*(volatile uint16_t *)(uintptr_t)(addr))
+#define PL30SEC_REG8(addr)  (*(volatile uint8_t  *)(uintptr_t)(addr))
+#define PL30SEC_BIT(n)      ((uint16_t)(1u << (n)))
+
+#define PL30SEC_SET_BIT16(addr, bit) do { PL30SEC_REG16(addr) |= PL30SEC_BIT(bit); } while (0)
+#define PL30SEC_CLR_BIT16(addr, bit) do { PL30SEC_REG16(addr) &= (uint16_t)~PL30SEC_BIT(bit); } while (0)
+#define PL30SEC_SET_BIT8(addr, bit)  do { PL30SEC_REG8(addr)  |= (uint8_t)(1u << (bit)); } while (0)
+#define PL30SEC_CLR_BIT8(addr, bit)  do { PL30SEC_REG8(addr)  &= (uint8_t)~(1u << (bit)); } while (0)
+
+/* Core/interrupt SFR byte aliases used directly in the disassembly. */
+#define SEC_GLOBAL_INT_FLAGS      PL30SEC_REG8(0x0083u)
+#define SEC_INTCON1               PL30SEC_REG16(0x0080u)
+#define SEC_IEC0                  PL30SEC_REG16(0x0094u)
+#define SEC_IEC1                  PL30SEC_REG16(0x0096u)
+#define SEC_IEC3                  PL30SEC_REG16(0x009Au)
+#define SEC_IEC7                  PL30SEC_REG16(0x00A2u)
+#define SEC_IFS0                  PL30SEC_REG16(0x0084u)
+#define SEC_IFS3                  PL30SEC_REG16(0x008Au)
+#define SEC_IFS7                  PL30SEC_REG16(0x0092u)
+
+/* Peripheral SFR addresses from the secondary SFR dump. */
+#define SEC_ADCON                 PL30SEC_REG16(0x0300u)
+#define SEC_ADPCFG                PL30SEC_REG16(0x0302u)
+#define SEC_ADSTAT                PL30SEC_REG16(0x0306u)
+#define SEC_ADBASE                PL30SEC_REG16(0x0308u)
+#define SEC_ADCPC0                PL30SEC_REG16(0x030Au)
+#define SEC_ADCPC1                PL30SEC_REG16(0x030Cu)
+#define SEC_ADCPC2                PL30SEC_REG16(0x030Eu)
+#define SEC_ADCPC3                PL30SEC_REG16(0x0310u)
+#define SEC_ADCBUF(n)             PL30SEC_REG16((uint16_t)(0x0340u + ((uint16_t)(n) * 2u)))
+#define SEC_ADCBUF0               PL30SEC_REG16(0x0340u)
+#define SEC_ADCBUF1               PL30SEC_REG16(0x0342u)
+#define SEC_ADCBUF2               PL30SEC_REG16(0x0344u)
+#define SEC_ADCBUF3               PL30SEC_REG16(0x0346u)
+#define SEC_ADCBUF4               PL30SEC_REG16(0x0348u)
+#define SEC_ADCBUF5               PL30SEC_REG16(0x034Au)
+#define SEC_ADCBUF6               PL30SEC_REG16(0x034Cu)
+#define SEC_ADCBUF7               PL30SEC_REG16(0x034Eu)
+#define SEC_ADCBUF8               PL30SEC_REG16(0x0350u)
+#define SEC_ADCBUF9               PL30SEC_REG16(0x0352u)
+
+#define SEC_I2C1RCV               PL30SEC_REG16(0x0200u)
+#define SEC_I2C1TRN               PL30SEC_REG16(0x0202u)
+#define SEC_I2C1CON               PL30SEC_REG16(0x0206u)
+#define SEC_I2C1STAT              PL30SEC_REG16(0x0208u)
+#define SEC_I2C1ADD               PL30SEC_REG16(0x020Au)
+#define SEC_I2C2RCV               PL30SEC_REG16(0x0210u)
+#define SEC_I2C2TRN               PL30SEC_REG16(0x0212u)
+#define SEC_I2C2BRG               PL30SEC_REG16(0x0214u)
+#define SEC_I2C2CON               PL30SEC_REG16(0x0216u)
+#define SEC_I2C2STAT              PL30SEC_REG16(0x0218u)
+
+#define SEC_U1MODE                PL30SEC_REG16(0x0220u)
+#define SEC_U1STA                 PL30SEC_REG16(0x0222u)
+#define SEC_U1TXREG               PL30SEC_REG16(0x0224u)
+#define SEC_U1RXREG               PL30SEC_REG16(0x0226u)
+#define SEC_U1BRG                 PL30SEC_REG16(0x0228u)
+
+#define SEC_PTCON                 PL30SEC_REG16(0x0400u)
+#define SEC_PTCON2                PL30SEC_REG16(0x0402u)
+#define SEC_PWMCON3               PL30SEC_REG16(0x0460u)
+#define SEC_IOCON3                PL30SEC_REG16(0x0462u)
+#define SEC_FCLCON3               PL30SEC_REG16(0x0464u)
+#define SEC_PDC3                  PL30SEC_REG16(0x0466u)
+#define SEC_PHASE3                PL30SEC_REG16(0x0468u)
+#define SEC_PWMCON4               PL30SEC_REG16(0x0480u)
+#define SEC_IOCON4                PL30SEC_REG16(0x0482u)
+#define SEC_FCLCON4               PL30SEC_REG16(0x0484u)
+#define SEC_PDC4                  PL30SEC_REG16(0x0486u)
+#define SEC_PHASE4                PL30SEC_REG16(0x0488u)
+#define SEC_DTR4                  PL30SEC_REG16(0x048Au)
+#define SEC_ALTDTR4               PL30SEC_REG16(0x048Cu)
+#define SEC_SDC4                  PL30SEC_REG16(0x048Eu)
+#define SEC_SPHASE4               PL30SEC_REG16(0x0490u)
+#define SEC_TRIG4                 PL30SEC_REG16(0x0492u)
+#define SEC_PWMCON6               PL30SEC_REG16(0x04C0u)
+#define SEC_IOCON6                PL30SEC_REG16(0x04C2u)
+#define SEC_FCLCON6               PL30SEC_REG16(0x04C4u)
+#define SEC_PDC6                  PL30SEC_REG16(0x04C6u)
+#define SEC_PHASE6                PL30SEC_REG16(0x04C8u)
+#define SEC_DTR6                  PL30SEC_REG16(0x04CAu)
+#define SEC_ALTDTR6               PL30SEC_REG16(0x04CCu)
+#define SEC_TRIG6                 PL30SEC_REG16(0x04D2u)
+
+#define SEC_NVMCON                PL30SEC_REG16(0x0760u)
+#define SEC_NVMKEY                PL30SEC_REG16(0x0766u)
+#define SEC_OSCCON                PL30SEC_REG16(0x0742u)
+#define SEC_CLKDIV                PL30SEC_REG16(0x0744u)
+#define SEC_PLLFBD                PL30SEC_REG16(0x0746u)
+#define SEC_ACLKCON               PL30SEC_REG16(0x0750u)
+
+/* Latch/TRIS byte aliases seen in disassembly. Prefer XC16 SFR names when editing. */
+#define SEC_LATC_HIGH             PL30SEC_REG8(0x02D5u)
+#define SEC_LATD_LOW              PL30SEC_REG8(0x02E0u)
+#define SEC_LATD_HIGH             PL30SEC_REG8(0x02E1u)
+#define SEC_LATF_LOW              PL30SEC_REG8(0x02F4u)
+#define SEC_LATF_HIGH             PL30SEC_REG8(0x02F5u)
+#define SEC_TRISF_LOW             PL30SEC_REG8(0x02F8u)
+#define SEC_LATG_LOW              PL30SEC_REG8(0x0304u)
+
+/* Application RAM symbols. */
+#define SEC_FAULT_COUNTER_A       PL30SEC_REG16(0x0816u)
+#define SEC_FAULT_COUNTER_B       PL30SEC_REG16(0x081Cu)
+#define SEC_RAMP_COUNTER          PL30SEC_REG16(0x084Eu)
+#define SEC_CONTROL_FLAGS_A       PL30SEC_REG16(0x085Eu)
+#define SEC_I2C1_STATE_BASE       0x086Au
+#define SEC_STATUS_LATCH_88A      PL30SEC_REG16(0x088Au)
+#define SEC_STATUS_LATCH_88C      PL30SEC_REG16(0x088Cu)
+#define SEC_UART_STATUS_BASE      0x0986u
+#define SEC_UART_STATUS_WORD      PL30SEC_REG16(0x0986u)
+#define SEC_UART_RETRY_STATE      PL30SEC_REG16(0x09A6u)
+#define SEC_UART_FRAME_STATE      PL30SEC_REG16(0x09B2u)
+#define SEC_UART_LAST_COMMAND     PL30SEC_REG16(0x09B6u)
+#define SEC_UART_LAST_VALUE       PL30SEC_REG16(0x09BEu)
+#define SEC_UART_TIMEOUT_TICK     PL30SEC_REG16(0x09CCu)
+#define SEC_UART_FLAGS            PL30SEC_REG16(0x09D2u)
+#define SEC_POWER_FLAGS           PL30SEC_REG16(0x09D4u)
+#define SEC_POWER_FLAGS_H         PL30SEC_REG8(0x09D5u)
+#define SEC_PWM_ENABLE_FLAGS      PL30SEC_REG16(0x09D6u)
+#define SEC_PWM6_LOOP_FLAGS       PL30SEC_REG16(0x09F0u)
+#define SEC_OUTPUT_HOLD_FLAGS     PL30SEC_REG16(0x09FEu)
+
+#define SEC_ADC_VBUS_FAST         PL30SEC_REG16(0x0A00u)
+#define SEC_ADC_VBUS_FILTERED     PL30SEC_REG16(0x0A02u)
+#define SEC_ADC_AUX_FAST          PL30SEC_REG16(0x0A04u)
+#define SEC_ADC_AUX_FILTERED      PL30SEC_REG16(0x0A06u)
+#define SEC_ADC_AUX8_RAW          PL30SEC_REG16(0x0A14u)
+#define SEC_ADC_AUX4_RAW          PL30SEC_REG16(0x0A16u)
+#define SEC_ADC_AUX_VALID_MODE    PL30SEC_REG16(0x0A18u)
+#define SEC_ADC_AUX8_FILTERED     PL30SEC_REG16(0x0A1Au)
+#define SEC_ADC_AUX9_RAW          PL30SEC_REG16(0x0A1Cu)
+#define SEC_ADC_AUX9_FILTERED     PL30SEC_REG16(0x0A1Eu)
+#define SEC_TICK_COUNTER          PL30SEC_REG16(0x0A30u)
+#define SEC_BOOT_OR_BOARD_FLAGS   PL30SEC_REG16(0x0A32u)
+
+#define SEC_BOOT_FLASH_ADDR_LO    PL30SEC_REG16(0x0A3Cu)
+#define SEC_BOOT_FLASH_ADDR_HI    PL30SEC_REG16(0x0A3Eu)
+#define SEC_BOOT_LOW_IMAGE_MARKER PL30SEC_REG16(0x0A40u)
+#define SEC_BOOT_ACTION_FLAGS     PL30SEC_REG16(0x0A44u)
+#define SEC_BOOT_LOW_IMAGE_TAG    PL30SEC_REG16(0x0AA8u)
+#define SEC_BOOT_LOW_IMAGE_CHECK  PL30SEC_REG16(0x0AAAu)
+#define SEC_BOOT_VALID_FLAGS      PL30SEC_REG16(0x0B94u)
+#define SEC_BOOT_MARKER_BYTE      PL30SEC_REG8(0x0B9Au)
+
+#define SEC_I2C1_BOARD_ID         PL30SEC_REG16(0x0CD0u)
+#define SEC_I2C_PAYLOAD_BASE      0x0CE2u
+#define SEC_I2C2_STATE_BASE       0x0D96u
+#define SEC_I2C2_SUBSTATE         PL30SEC_REG16(0x0DBEu)
+#define SEC_I2C2_TIMEOUT          PL30SEC_REG16(0x0DBAu)
+#define SEC_I2C2_FLAGS            PL30SEC_REG16(0x0DCAu)
+#define SEC_I2C2_FLAGS_B          PL30SEC_REG8(0x0DCAu)
+
+#define SEC_CAL_0D50              PL30SEC_REG16(0x0D50u)
+#define SEC_CAL_0D52              PL30SEC_REG16(0x0D52u)
+#define SEC_CAL_0D54              PL30SEC_REG16(0x0D54u)
+#define SEC_CAL_0D56              PL30SEC_REG16(0x0D56u)
+#define SEC_CAL_0D58              PL30SEC_REG16(0x0D58u)
+#define SEC_CAL_0D5A              PL30SEC_REG16(0x0D5Au)
+#define SEC_CAL_0D5C              PL30SEC_REG16(0x0D5Cu)
+#define SEC_CAL_0D5E              PL30SEC_REG16(0x0D5Eu)
+#define SEC_CAL_0D60              PL30SEC_REG16(0x0D60u)
+#define SEC_CAL_0D62              PL30SEC_REG16(0x0D62u)
+#define SEC_CAL_0D64              PL30SEC_REG16(0x0D64u)
+#define SEC_CAL_VALID_DIRTY       PL30SEC_REG16(0x0D66u)
+#define SEC_CAL_FLAGS             PL30SEC_REG8(0x0D68u)
+
+#define SEC_ADC_CURRENT_FILTER_A  PL30SEC_REG16(0x0E54u)
+#define SEC_ADC_CURRENT_FILTER_B  PL30SEC_REG16(0x0E56u)
+#define SEC_I2C1_ADDRESS_DELAY    PL30SEC_REG16(0x0E5Au)
+#define SEC_APP_STATE             PL30SEC_REG16(0x0E1Eu)
+#define SEC_ADC_CURRENT_RAW_A     PL30SEC_REG16(0x0EAAu)
+#define SEC_ADC_CURRENT_RAW_B     PL30SEC_REG16(0x0EACu)
+
+/* Common flag masks with inferred names. */
+#define SEC_UART_FLAG_BUSY        PL30SEC_BIT(0)
+#define SEC_UART_FLAG_VALUE       PL30SEC_BIT(1)
+#define SEC_UART_FLAG_EVENT5      PL30SEC_BIT(5)
+#define SEC_UART_FLAG_TIMEOUT     PL30SEC_BIT(7)
+#define SEC_POWER_FLAG_OUTPUT_OK  PL30SEC_BIT(0)
+#define SEC_POWER_FLAG_FAULT3     PL30SEC_BIT(3)
+#define SEC_POWER_FLAG_CHANGED    PL30SEC_BIT(4)
+#define SEC_PWM_ENABLE_0          PL30SEC_BIT(0)
+#define SEC_PWM_ENABLE_1          PL30SEC_BIT(1)
+#define SEC_OUTPUT_HOLD_1         PL30SEC_BIT(1)
+#define SEC_OUTPUT_HOLD_2         PL30SEC_BIT(2)
+
+typedef enum {
+    SEC_APP_STATE_IDLE          = 1u,
+    SEC_APP_STATE_PENDING_RUN   = 2u,
+    SEC_APP_STATE_RAMP_OR_RUN   = 3u,
+    SEC_APP_STATE_BOOT_SHUTDOWN = 4u
+} sec_app_state_t;
+
+#endif /* PL30SEC_SYMBOLS_H */

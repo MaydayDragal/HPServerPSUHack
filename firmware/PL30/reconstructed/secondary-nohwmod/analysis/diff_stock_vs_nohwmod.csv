@@ -1,0 +1,31 @@
+addr,stock_opcode,stock_asm,modified_opcode,modified_asm,inferred_role
+0x385C,801A21,"MOV ADCBUF2, W1",071151,RCALL 0x5B00,ADC feedback hook: direct ADCBUF2 read replaced by RCALL to new scaling helper
+0x39B4,246C33,"MOV #0x46C3, W3",246E43,"MOV #0x46E4, W3",float threshold/setpoint constant high half changed: 0x46C3EF9E -> 0x46E4EF9E
+0x5B00,FFFFFF,NOPR,F80000,PUSH WREG0,"new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B02,FFFFFF,NOPR,F80004,PUSH WREG2,"new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B04,FFFFFF,NOPR,F80006,PUSH WREG3,"new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B06,FFFFFF,NOPR,801A20,"MOV ADCBUF2, W0","new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B08,FFFFFF,NOPR,26AC22,"MOV #0x6AC2, W2","new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B0A,FFFFFF,NOPR,B80002,"MUL.UU W0, W2, W0","new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B0C,FFFFFF,NOPR,DD08C1,"SL W1, #1, W1","new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B0E,FFFFFF,NOPR,DE004F,"LSR W0, #15, W0","new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B10,FFFFFF,NOPR,700081,"IOR W0, W1, W1","new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B12,FFFFFF,NOPR,F90006,POP WREG3,"new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B14,FFFFFF,NOPR,F90004,POP WREG2,"new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B16,FFFFFF,NOPR,F90000,POP WREG0,"new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x5B18,FFFFFF,NOPR,060000,RETURN,"new low-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0x945C,801A21,"MOV ADCBUF2, W1",0706E1,RCALL 0xA220,ADC feedback hook: direct ADCBUF2 read replaced by RCALL to new scaling helper
+0x95B4,246C33,"MOV #0x46C3, W3",246E43,"MOV #0x46E4, W3",float threshold/setpoint constant high half changed: 0x46C3EF9E -> 0x46E4EF9E
+0xA220,FFFFFF,NOPR,F80000,PUSH WREG0,"new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA222,FFFFFF,NOPR,F80004,PUSH WREG2,"new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA224,FFFFFF,NOPR,F80006,PUSH WREG3,"new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA226,FFFFFF,NOPR,801A20,"MOV ADCBUF2, W0","new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA228,FFFFFF,NOPR,26AC22,"MOV #0x6AC2, W2","new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA22A,FFFFFF,NOPR,B80002,"MUL.UU W0, W2, W0","new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA22C,FFFFFF,NOPR,DD08C1,"SL W1, #1, W1","new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA22E,FFFFFF,NOPR,DE004F,"LSR W0, #15, W0","new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA230,FFFFFF,NOPR,700081,"IOR W0, W1, W1","new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA232,FFFFFF,NOPR,F90006,POP WREG3,"new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA234,FFFFFF,NOPR,F90004,POP WREG2,"new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA236,FFFFFF,NOPR,F90000,POP WREG0,"new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"
+0xA238,FFFFFF,NOPR,060000,RETURN,"new high-image ADCBUF2 Q15 scaling helper, inserted into previously blank flash"

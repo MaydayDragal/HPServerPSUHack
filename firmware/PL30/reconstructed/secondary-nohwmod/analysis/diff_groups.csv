@@ -1,0 +1,7 @@
+start_addr,end_addr,word_count,summary
+0x385C,0x385C,1,low image: ADCBUF2 direct read patched to RCALL 0x5B00
+0x39B4,0x39B4,1,low image: float constant 0x46C3EF9E raised to 0x46E4EF9E
+0x5B00,0x5B18,13,low image helper: scaled_vout_adc = (ADCBUF2 * 0x6AC2) >> 15
+0x945C,0x945C,1,high image: ADCBUF2 direct read patched to RCALL 0xA220
+0x95B4,0x95B4,1,high image: mirrored float constant raise
+0xA220,0xA238,13,high image helper: scaled_vout_adc = (ADCBUF2 * 0x6AC2) >> 15

@@ -1,0 +1,5 @@
+PL30 Rev.06 secondary 20A CC reconstruction package
+Program word differences: 6
+Decoded HEX byte differences: 14
+Stock HEX SHA256: 4405d6d58e26406767ca7e2756f88d09181fe51bc56991a3cf618ecc4c659429
+Modified HEX SHA256: 69b170b93d8a165a6f01a07c43e316c2ba08b703fa5adaeca431ea412175d366

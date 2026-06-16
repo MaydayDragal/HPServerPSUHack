@@ -1,0 +1,95 @@
+program_addr,nohwmod_rev10_opcode,nohwmod_rev10_asm,pico_opcode,pico_asm,interpretation
+0x0D38,370105,BRA 0xF44,3726F6,BRA 0x5B26,Low image I2C1 command-table entry for wire register 0x3E/logical 0x1F now branches to the CC-command write handler at 0x5B26.
+0x0D40,370101,BRA 0xF44,3726EF,BRA 0x5B20,Low image I2C1 command-table entry for wire register 0x42/logical 0x21 now branches to the status/control write handler at 0x5B20.
+0x2BD6,801A61,"MOV ADCBUF6, W1",0717AC,RCALL 0x5B30,"Low image ADC current-sample path is replaced with RCALL 0x5B30, which substitutes synthetic current ADC words based on the external output-enable bit."
+0x2BD8,887551,"MOV W1, 0xEAA",000000,NOP,NOP padding after 0x2BD6 hook; original moved ADCBUF6 to RAM 0x0EAA.
+0x2BDA,801A72,"MOV ADCBUF7, W2",000000,NOP,NOP padding after 0x2BD6 hook; original moved ADCBUF7 to W2.
+0x2BDC,887562,"MOV W2, 0xEAC",000000,NOP,NOP padding after 0x2BD6 hook; original moved W2 to RAM 0x0EAC.
+0x3462,806670,"MOV 0xCCE, W0",071376,RCALL 0x5B50,"Low image current-limit/mode-table application path is replaced with RCALL 0x5B50, which clamps and applies an externally written CC limit."
+0x3464,886660,"MOV W0, 0xCCC",000000,NOP,NOP padding after 0x3462 hook; original copied 0x0CCE to 0x0CCC.
+0x39B4,246E43,"MOV #0x46E4, W3",246C33,"MOV #0x46C3, W3",Unclassified program-memory change.
+0x5B20,FFFFFF,NOPR,804360,"MOV 0x86C, W0",Low image inserted status/control write handler: RAM 0x08C8 = received I2C word from 0x086C.
+0x5B22,FFFFFF,NOPR,884640,"MOV W0, 0x8C8",Unclassified program-memory change.
+0x5B24,FFFFFF,NOPR,37DA21,BRA 0xF68,Unclassified program-memory change.
+0x5B26,FFFFFF,NOPR,804360,"MOV 0x86C, W0",Low image inserted CC-value write handler: RAM 0x08C4 = received I2C word from 0x086C.
+0x5B28,FFFFFF,NOPR,884620,"MOV W0, 0x8C4",Unclassified program-memory change.
+0x5B2A,FFFFFF,NOPR,37DA1E,BRA 0xF68,Unclassified program-memory change.
+0x5B30,FFFFFF,NOPR,ABE8C9,"BTST 0x8C9, #7",Low image inserted current-sample substitute helper for output-enable controlled ADC/current words.
+0x5B32,FFFFFF,NOPR,3A0005,"BRA NZ, 0x5B3E",Unclassified program-memory change.
+0x5B34,FFFFFF,NOPR,203A31,"MOV #0x3A3, W1",Unclassified program-memory change.
+0x5B36,FFFFFF,NOPR,887551,"MOV W1, 0xEAA",Unclassified program-memory change.
+0x5B38,FFFFFF,NOPR,200002,"MOV #0x0, W2",Unclassified program-memory change.
+0x5B3A,FFFFFF,NOPR,887562,"MOV W2, 0xEAC",Unclassified program-memory change.
+0x5B3C,FFFFFF,NOPR,370004,BRA 0x5B46,Unclassified program-memory change.
+0x5B3E,FFFFFF,NOPR,200DE1,"MOV #0xDE, W1",Unclassified program-memory change.
+0x5B40,FFFFFF,NOPR,887551,"MOV W1, 0xEAA",Unclassified program-memory change.
+0x5B42,FFFFFF,NOPR,200CC2,"MOV #0xCC, W2",Unclassified program-memory change.
+0x5B44,FFFFFF,NOPR,887562,"MOV W2, 0xEAC",Unclassified program-memory change.
+0x5B46,FFFFFF,NOPR,060000,RETURN,Unclassified program-memory change.
+0x5B50,FFFFFF,NOPR,AB08C8,"BTST 0x8C8, #0","Low image inserted CC-limit clamp/apply helper. If RAM 0x08C8 bit0 is set, RAM 0x08C4 is bounded by 0x0500 and 0x0E50, then written into 0x0E50."
+0x5B52,FFFFFF,NOPR,32000D,"BRA Z, 0x5B6E",Unclassified program-memory change.
+0x5B54,FFFFFF,NOPR,804620,"MOV 0x8C4, W0",Unclassified program-memory change.
+0x5B56,FFFFFF,NOPR,205001,"MOV #0x500, W1",Unclassified program-memory change.
+0x5B58,FFFFFF,NOPR,500F81,"SUB W0, W1, [W15]",Unclassified program-memory change.
+0x5B5A,FFFFFF,NOPR,3E0001,"BRA GTU, 0x5B5E",Unclassified program-memory change.
+0x5B5C,FFFFFF,NOPR,884621,"MOV W1, 0x8C4",Unclassified program-memory change.
+0x5B5E,FFFFFF,NOPR,807280,"MOV 0xE50, W0",Unclassified program-memory change.
+0x5B60,FFFFFF,NOPR,804621,"MOV 0x8C4, W1",Unclassified program-memory change.
+0x5B62,FFFFFF,NOPR,500F81,"SUB W0, W1, [W15]",Unclassified program-memory change.
+0x5B64,FFFFFF,NOPR,3E0001,"BRA GTU, 0x5B68",Unclassified program-memory change.
+0x5B66,FFFFFF,NOPR,884620,"MOV W0, 0x8C4",Unclassified program-memory change.
+0x5B68,FFFFFF,NOPR,804620,"MOV 0x8C4, W0",Unclassified program-memory change.
+0x5B6A,FFFFFF,NOPR,887280,"MOV W0, 0xE50",Unclassified program-memory change.
+0x5B6C,FFFFFF,NOPR,370002,BRA 0x5B72,Unclassified program-memory change.
+0x5B6E,FFFFFF,NOPR,807280,"MOV 0xE50, W0",Unclassified program-memory change.
+0x5B70,FFFFFF,NOPR,000000,NOP,Unclassified program-memory change.
+0x5B72,FFFFFF,NOPR,806670,"MOV 0xCCE, W0",Unclassified program-memory change.
+0x5B74,FFFFFF,NOPR,886660,"MOV W0, 0xCCC",Unclassified program-memory change.
+0x5B76,FFFFFF,NOPR,060000,RETURN,Unclassified program-memory change.
+0x6938,370105,BRA 0x6B44,371C93,BRA 0xA260,High mirror I2C1 command-table entry for wire register 0x3E/logical 0x1F now branches to 0xA260.
+0x6940,370101,BRA 0x6B44,371C87,BRA 0xA250,High mirror I2C1 command-table entry for wire register 0x42/logical 0x21 now branches to 0xA250.
+0x87D6,801A61,"MOV ADCBUF6, W1",070D4C,RCALL 0xA270,High mirror current-sample path is replaced with RCALL 0xA270.
+0x87D8,887551,"MOV W1, 0xEAA",000000,NOP,High mirror NOP padding after 0x87D6 hook.
+0x87DA,801A72,"MOV ADCBUF7, W2",000000,NOP,High mirror NOP padding after 0x87D6 hook.
+0x87DC,887562,"MOV W2, 0xEAC",000000,NOP,High mirror NOP padding after 0x87D6 hook.
+0x9062,806670,"MOV 0xCCE, W0",07091E,RCALL 0xA2A0,High mirror current-limit/mode-table application path is replaced with RCALL 0xA2A0.
+0x9064,886660,"MOV W0, 0xCCC",000000,NOP,High mirror NOP padding after 0x9062 hook.
+0x95B4,246E43,"MOV #0x46E4, W3",246C33,"MOV #0x46C3, W3",Unclassified program-memory change.
+0xA250,FFFFFF,NOPR,804360,"MOV 0x86C, W0",High mirror inserted status/control write handler: RAM 0x08C8 = received I2C word from 0x086C.
+0xA252,FFFFFF,NOPR,884640,"MOV W0, 0x8C8",Unclassified program-memory change.
+0xA254,FFFFFF,NOPR,37E489,BRA 0x6B68,Unclassified program-memory change.
+0xA260,FFFFFF,NOPR,804360,"MOV 0x86C, W0",High mirror inserted CC-value write handler: RAM 0x08C4 = received I2C word from 0x086C.
+0xA262,FFFFFF,NOPR,884620,"MOV W0, 0x8C4",Unclassified program-memory change.
+0xA264,FFFFFF,NOPR,37E481,BRA 0x6B68,Unclassified program-memory change.
+0xA270,FFFFFF,NOPR,ABE8C9,"BTST 0x8C9, #7",High mirror inserted current-sample substitute helper.
+0xA272,FFFFFF,NOPR,3A0005,"BRA NZ, 0xA27E",Unclassified program-memory change.
+0xA274,FFFFFF,NOPR,203A31,"MOV #0x3A3, W1",Unclassified program-memory change.
+0xA276,FFFFFF,NOPR,887551,"MOV W1, 0xEAA",Unclassified program-memory change.
+0xA278,FFFFFF,NOPR,200002,"MOV #0x0, W2",Unclassified program-memory change.
+0xA27A,FFFFFF,NOPR,887562,"MOV W2, 0xEAC",Unclassified program-memory change.
+0xA27C,FFFFFF,NOPR,370004,BRA 0xA286,Unclassified program-memory change.
+0xA27E,FFFFFF,NOPR,200DE1,"MOV #0xDE, W1",Unclassified program-memory change.
+0xA280,FFFFFF,NOPR,887551,"MOV W1, 0xEAA",Unclassified program-memory change.
+0xA282,FFFFFF,NOPR,200CC2,"MOV #0xCC, W2",Unclassified program-memory change.
+0xA284,FFFFFF,NOPR,887562,"MOV W2, 0xEAC",Unclassified program-memory change.
+0xA286,FFFFFF,NOPR,060000,RETURN,Unclassified program-memory change.
+0xA2A0,FFFFFF,NOPR,AB08C8,"BTST 0x8C8, #0",High mirror inserted CC-limit clamp/apply helper.
+0xA2A2,FFFFFF,NOPR,32000D,"BRA Z, 0xA2BE",Unclassified program-memory change.
+0xA2A4,FFFFFF,NOPR,804620,"MOV 0x8C4, W0",Unclassified program-memory change.
+0xA2A6,FFFFFF,NOPR,205001,"MOV #0x500, W1",Unclassified program-memory change.
+0xA2A8,FFFFFF,NOPR,500F81,"SUB W0, W1, [W15]",Unclassified program-memory change.
+0xA2AA,FFFFFF,NOPR,3E0001,"BRA GTU, 0xA2AE",Unclassified program-memory change.
+0xA2AC,FFFFFF,NOPR,884621,"MOV W1, 0x8C4",Unclassified program-memory change.
+0xA2AE,FFFFFF,NOPR,807280,"MOV 0xE50, W0",Unclassified program-memory change.
+0xA2B0,FFFFFF,NOPR,804621,"MOV 0x8C4, W1",Unclassified program-memory change.
+0xA2B2,FFFFFF,NOPR,500F81,"SUB W0, W1, [W15]",Unclassified program-memory change.
+0xA2B4,FFFFFF,NOPR,3E0001,"BRA GTU, 0xA2B8",Unclassified program-memory change.
+0xA2B6,FFFFFF,NOPR,884620,"MOV W0, 0x8C4",Unclassified program-memory change.
+0xA2B8,FFFFFF,NOPR,804620,"MOV 0x8C4, W0",Unclassified program-memory change.
+0xA2BA,FFFFFF,NOPR,887280,"MOV W0, 0xE50",Unclassified program-memory change.
+0xA2BC,FFFFFF,NOPR,370002,BRA 0xA2C2,Unclassified program-memory change.
+0xA2BE,FFFFFF,NOPR,807280,"MOV 0xE50, W0",Unclassified program-memory change.
+0xA2C0,FFFFFF,NOPR,000000,NOP,Unclassified program-memory change.
+0xA2C2,FFFFFF,NOPR,806670,"MOV 0xCCE, W0",Unclassified program-memory change.
+0xA2C4,FFFFFF,NOPR,886660,"MOV W0, 0xCCC",Unclassified program-memory change.
+0xA2C6,FFFFFF,NOPR,060000,RETURN,Unclassified program-memory change.
