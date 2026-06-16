@@ -1,0 +1,37 @@
+low_addr,high_addr,name,kind,summary,confidence
+0x0000,,reset_vector,GOTO 0x5000,Bootloader/reset entry; does not directly enter application,certain
+0x0400,0x6000,c_startup_low_high,XC16 startup and data init,"Low and high application copies; stack W15=0x0EB6, SPLIM=0x1FE4, then call 0x3C44/0x9844",certain
+0x3C44,0x9844,app_main,main secondary control loop,"Initializes clock/GPIO/timers/UART/PWM/ADC/I2C/calibration, then loops over comms, ADC-derived protection, PWM control, and state machine",high
+0x43C4,0x9FC4,init_clock,Clock/PLL/aux clock,"PLLFBD=0x29, OSCCON unlock/clock switch, ACLKCON=0xA740, PTCON2=1",high
+0x4404,0xA004,init_gpio,GPIO direction/latch setup,"Configures LAT/TRIS B,C,D,E,F,G and mode pin behavior",high
+0x4442,0xA042,init_timers,Timer1/Timer2 setup,"PR1=0x9C40 and PR2=0x1F40, enables Timer1 interrupt/timebase",high
+0x2328,0x7F28,init_uart1,UART1 protocol initialization,"U1BRG=0x1A, initializes protocol flags and enables UART interrupts",high
+0x3FDE,0x9BDE,start_pwm3_gate,PWM3/control-output enable path,"Sets LATC gate, initializes PWM3, clears output hold flags, sets primary enable flag",high
+0x3C16,0x9816,init_pwm4_pwm6,Power PWM initialization,"Initializes PWM4/PWM6, PHASE4=0x8214, PHASE6=0x3FFF, PDC6=0x445C, sets enable flags",high
+0x30EC,0x8CEC,init_pwm4_softstart,PWM4 soft-start parameters,Configures PWM4 mode and initial SPHASE/SDC/default control-loop RAM,medium
+0x4452,0xA052,init_adc,ADC/PWM trigger setup,"ADPCFG=0xF000, ADCPC0..3 configured, pair interrupts enabled",high
+0x14EC,0x70EC,load_calibration,Configuration/calibration load,I2C2/EEPROM-backed calibration load into 0x0D50..0x0D7B and related flags,medium
+0x167A,0x727A,refresh_calibration,Runtime calibration refresh,Same EEPROM/config data refreshed when dirty flag indicates update,medium
+0x196A,0x756A,init_i2c2,I2C2 master init,"I2C2CON=0x8200, I2C2BRG=0x018B, enables I2C2 interrupt",high
+0x07D8,0x63D8,i2c1_address_select,I2C1 address/update service,Uses ADC/port-derived condition and board pins to set I2C1 slave address and enable I2C1,medium
+0x2350,0x7F50,uart1_housekeeping,UART protocol housekeeping,"Supervises command-response framing, timeouts, and outbound telemetry",medium
+0x1F30,0x7B30,uart_send_query_frame,UART frame TX helper,"Sends 0x05 + command, arms TX/RX protocol state",high
+0x1F54,0x7B54,uart_send_param_frame,UART frame TX helper,"Sends 0x50 + command/value, arms TX/RX protocol state",high
+0x20D4,0x7CD4,uart1_rx_isr,UART receive ISR,"Command frame parser: header, checksum/ACK, writes command register window and calls command handler",medium
+0x0F6A,0x6B6A,i2c1_slave_isr,I2C1 slave ISR,Implements secondary-side I2C register protocol used by the rest of the supply,medium
+0x1988,0x7588,i2c2_master_isr,I2C2 master ISR,Services EEPROM/config transactions and bus state machine,medium
+0x28AA,0x84AA,timer1_housekeeping_isr,1 ms/housekeeping ISR,"Ticks 0x0A30, comm counters, debounce/fault counters, state flags",medium
+0x2BD0,0x87D0,adc_isr_current_pair,ADC pair ISR,Reads ADCBUF6/7 to 0x0EAA/0x0EAC and filtered values 0x0E54/0x0E56,medium
+0x34FE,0x90FE,adc_isr_pwm6_loop,ADC pair ISR and PWM6 loop,Reads ADCBUF1/2 etc.; adjusts PDC6 and gate/fault flags,medium
+0x3858,0x9458,adc_isr_vbus_pair,ADC pair ISR,Reads ADCBUF2/3 into 0x0A00/0x0A4A and filtered values 0x0A02 etc.,medium
+0x4162,0x9D62,adc_isr_aux_pair,ADC pair ISR,"Reads ADCBUF8/9/4, filters 0x0A14/0x0A1C to 0x0A1A/0x0A1E, updates flags",medium
+0x4124,0x9D24,evaluate_output_faults,Fault/output permissive logic,Compares ADC-filtered quantities against thresholds and enables/disables PWM/output flags,medium
+0x34F4,0x90F4,pwm6_control_update,PWM6 regulation update,"Invokes ADC-derived control loops, duty limiting, and soft-start calculations",medium
+0x3D82,0x9982,wait_ticks,Delay by ISR tick counter,Clears 0x0A30 and waits until desired tick count,high
+0x3D8E,0x998E,clear_runtime_shutdown_state,State/fault cleanup,"Masks 0x09D6, clears several output/control variables and LATD bit1",medium
+0x3F46,0x9B46,i2c2_transaction_service,I2C2 transaction service,Handles timeouts and state transitions for EEPROM/config transactions,medium
+0x4252,0x9E52,nvm_unlock_write,NVM helper,Unlocks and starts NVM write/erase operation,high
+0x550E,,boot_main,Bootloader selector/update loop,"Initializes boot hardware, validates low/high app images, selects 0x0400 or 0x6000, or enters update loop",medium
+0x563A,,boot_validate_low_app,Boot image validation,Checks low image metadata and checksum over 0x0104..0x01FF and 0x0400..0x4FFF,medium
+0x543E,,boot_i2c1_slave_isr_or_service,Bootloader I2C1 protocol,Boot update/control protocol for receiving flash chunks,medium
+0x5964,,boot_timer1_isr,Bootloader timer/timeout ISR,Timeout/watchdog for bootloader update; can fall back to high application,medium

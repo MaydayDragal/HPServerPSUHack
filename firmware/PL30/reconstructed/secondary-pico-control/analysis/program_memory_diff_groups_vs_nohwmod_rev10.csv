@@ -1,0 +1,18 @@
+start_addr,end_addr,word_count,image,interpretation
+0x0D38,0x0D38,1,low,Low image I2C1 command-table entry for wire register 0x3E/logical 0x1F now branches to the CC-command write handler at 0x5B26.
+0x0D40,0x0D40,1,low,Low image I2C1 command-table entry for wire register 0x42/logical 0x21 now branches to the status/control write handler at 0x5B20.
+0x2BD6,0x2BDC,4,low,"Low image ADC current-sample path is replaced with RCALL 0x5B30, which substitutes synthetic current ADC words based on the external output-enable bit."
+0x3462,0x3464,2,low,"Low image current-limit/mode-table application path is replaced with RCALL 0x5B50, which clamps and applies an externally written CC limit."
+0x39B4,0x39B4,1,low,Unclassified program-memory change.
+0x5B20,0x5B2A,6,low,Low image inserted status/control write handler: RAM 0x08C8 = received I2C word from 0x086C.
+0x5B30,0x5B46,12,low,Low image inserted current-sample substitute helper for output-enable controlled ADC/current words.
+0x5B50,0x5B76,20,low,"Low image inserted CC-limit clamp/apply helper. If RAM 0x08C8 bit0 is set, RAM 0x08C4 is bounded by 0x0500 and 0x0E50, then written into 0x0E50."
+0x6938,0x6938,1,high mirror,High mirror I2C1 command-table entry for wire register 0x3E/logical 0x1F now branches to 0xA260.
+0x6940,0x6940,1,high mirror,High mirror I2C1 command-table entry for wire register 0x42/logical 0x21 now branches to 0xA250.
+0x87D6,0x87DC,4,high mirror,High mirror current-sample path is replaced with RCALL 0xA270.
+0x9062,0x9064,2,high mirror,High mirror current-limit/mode-table application path is replaced with RCALL 0xA2A0.
+0x95B4,0x95B4,1,high mirror,Unclassified program-memory change.
+0xA250,0xA254,3,high mirror,High mirror inserted status/control write handler: RAM 0x08C8 = received I2C word from 0x086C.
+0xA260,0xA264,3,high mirror,High mirror inserted CC-value write handler: RAM 0x08C4 = received I2C word from 0x086C.
+0xA270,0xA286,12,high mirror,High mirror inserted current-sample substitute helper.
+0xA2A0,0xA2C6,20,high mirror,High mirror inserted CC-limit clamp/apply helper.

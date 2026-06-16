@@ -1,0 +1,31 @@
+image,table_addr,operation,ram_addr,byte_length,words,inferred_role
+app,0x44E4,copy,0x0E54,0x0010,03FF 0000 0000 01F3 0000 0000 0000 0000,ADC/I2C defaults
+app,0x44E4,clear,0x0EAA,0x0004,,Raw ADC current buffer defaults
+app,0x44E4,copy,0x0E02,0x0020,FFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFF 0000 0000 0000 0000 0000 0000 0001 0001,status/default block
+app,0x44E4,clear,0x080C,0x0240,,main control/counter region
+app,0x44E4,copy,0x2000,0x0002,0002,near PSV/DMA-related sentinel
+app,0x44E4,clear,0x0CD0,0x0072,,I2C/address/config workspace
+app,0x44E4,clear,0x0E64,0x000E,,runtime scratch
+app,0x44E4,copy,0x0DD6,0x002C,0190 0190 0001 0000 0000 0001 0000 0000 0000 0000 0000 0000 0000 0FA0 0000 0001 0000 0000 3133 0001 0000 0C6C,power-regulation defaults
+app,0x44E4,clear,0x0E3C,0x0018,,runtime scratch
+app,0x44E4,clear,0x0800,0x000C,,flag scratch
+app,0x44E4,clear,0x1FF4,0x000C,,top-of-RAM startup workspace
+app,0x44E4,copy,0x0E8C,0x000A,0000 0001 0000 0000 0000,runtime defaults
+app,0x44E4,clear,0x0EB2,0x0002,,runtime default
+app,0x44E4,copy,0x0EB4,0x0002,0000,runtime default
+app,0x44E4,clear,0x0EAE,0x0004,,runtime default
+app,0x44E4,copy,0x0E96,0x000A,00B4 00AC 008A 0000 0000,threshold/default block
+app,0x44E4,clear,0x0C54,0x007C,,protocol/config workspace
+app,0x44E4,copy,0x0EA0,0x000A,0000 0000 0000 1900 FFFF,threshold/default block
+app,0x44E4,clear,0x0E22,0x001A,,runtime workspace
+app,0x44E4,copy,0x0E80,0x000C,002E 0000 0000 0000 0006 0000,runtime defaults
+app,0x44E4,clear,0x0D42,0x0054,,calibration/config workspace
+app,0x44E4,clear,0x0A4C,0x0208,,measurement/control workspace
+app,0x44E4,copy,0x0E72,0x000E,0000 0000 0000 0000 0000 0000 0000,runtime defaults
+app,0x44E4,clear,0x0D96,0x0040,,I2C2 master state
+boot,0x5AA6,copy,0x0C2E,0x000A,0000 0000 0000 0000 0000,boot state defaults
+boot,0x5AA6,clear,0x0BCE,0x0060,,boot update workspace
+boot,0x5AA6,clear,0x0800,0x0208,,boot work RAM
+boot,0x5AA6,copy,0x0C38,0x0006,0000 0000 0000,boot state defaults
+boot,0x5AA6,clear,0x0A08,0x01C6,,boot/update protocol workspace
+boot,0x5AA6,copy,0x0C3E,0x0002,01F3,boot delay/count default

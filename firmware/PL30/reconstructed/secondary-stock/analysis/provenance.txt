@@ -1,0 +1,4 @@
+Generated reconstruction package for PL30 Rev.10 secondary-side dsPIC33FJ64GS606.
+Parsed program-memory words: 22016
+Nonblank ranges: 7
+Original files copied: 6

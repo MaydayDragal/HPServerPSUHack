@@ -1,0 +1,38 @@
+{
+  "generated_utc": "2026-06-15T02:16:38.785840Z",
+  "rev06_program_words": 22016,
+  "rev10_program_words": 22016,
+  "program_word_diffs": 0,
+  "config_line_diffs": 0,
+  "decoded_hex_byte_count_rev06": 88100,
+  "decoded_hex_byte_count_rev10": 88100,
+  "decoded_hex_byte_diffs": 0,
+  "raw_hex_files_identical": false,
+  "hex_files_identical_after_newline_normalization": true,
+  "file_register_value_or_name_diffs": 2,
+  "sfr_value_or_name_diffs": 2,
+  "hashes": {
+    "rev06_config_sha256": "e3f719074c36d279b280172618a6dd0809b877389bf0f366aea4dc5f62e04e7a",
+    "rev10_config_sha256": "e3f719074c36d279b280172618a6dd0809b877389bf0f366aea4dc5f62e04e7a",
+    "rev06_program_memory_sha256": "d2bef697d5446f0cce5276539830b0cd821a457bac84e5555291c50c70188ce0",
+    "rev10_program_memory_sha256": "d2bef697d5446f0cce5276539830b0cd821a457bac84e5555291c50c70188ce0",
+    "rev06_hex_raw_sha256": "4405d6d58e26406767ca7e2756f88d09181fe51bc56991a3cf618ecc4c659429",
+    "rev10_hex_raw_sha256": "c547d5cd498b5c81bbc6d3de9410d26921f710eacd13220d476edf5b78b1bf48",
+    "rev06_file_registers_sha256": "77f154a2732d5f0bd8f6a3eb879c6d77647786dfd212137b9a4f86bd4a4b8ffb",
+    "rev10_file_registers_sha256": "eeec789295b063f1e8fce094187abac2ee9945a984cebbab100e38c7af5b00ed",
+    "rev06_sfrs_sha256": "388a03ffc96d5937a8f68193e1c1bcde9758ad6e18ddc503db7709aad6f85aa8",
+    "rev10_sfrs_sha256": "71c714600b883aa6348836392b1d710cf67e639859df12b2a7f0f3cf0e061452"
+  },
+  "hex_address_ranges": [
+    [
+      "0x00000000",
+      "0x000157FF",
+      88064
+    ],
+    [
+      "0x01F00000",
+      "0x01F00023",
+      36
+    ]
+  ]
+}

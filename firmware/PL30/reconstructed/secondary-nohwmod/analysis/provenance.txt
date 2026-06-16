@@ -1,0 +1,8 @@
+Generated reconstruction package for PL30 Rev.10 NoHWMod secondary-side dsPIC33FJ64GS606.
+Parsed modified program-memory words: 22016
+Program-memory words changed versus stock: 30
+Diff groups: 6
+Nonblank modified ranges: 9
+NoHWMod ADC scale: 0x6AC2 / 32768 = 0.834045410156250; physical multiplier 1.198975484815
+Stock float constant: 0x46C3EF9E = 25079.808594
+NoHWMod float constant: 0x46E4EF9E = 29303.808594

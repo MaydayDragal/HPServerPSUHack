@@ -1,0 +1,2 @@
+name,addr,stock_value,modified_value,interpretation
+PCL,0x002E,0x5A5A,0x5A5E,runtime/debug snapshot only

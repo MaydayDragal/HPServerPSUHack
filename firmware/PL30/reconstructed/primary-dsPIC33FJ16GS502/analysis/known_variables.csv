@@ -1,0 +1,40 @@
+address,name,notes
+0x0814,G_STATE,main state 1..4
+0x0816,PL30_SINE_TABLE,"373-entry envelope table, 0x816..0xAFE"
+0x0B00,G_IDX_A,sine index A
+0x0B02,G_IDX_B,sine index B
+0x0B04,G_ENV_A,scaled table A
+0x0B06,G_ENV_B,scaled table B
+0x0B12,G_SCALE_PHASE,phase/gain constant; PHASE1 value 0x19D5/0x1A63
+0x0B14,G_ADC_DELTA_NOW,absolute difference ADCBUF0/1
+0x0B2E,G_ADC_AVG,8-sample average of ADC delta / input sense
+0x0B30,G_LINE_COUNTER,"incremented in ADC ISR, used to index sine table"
+0x0B34,G_AVG_LEVEL,"filtered average level, initial 700"
+0x0B36,G_PHASE_MULT,multiplies line counter before sine-table lookup
+0x0B3A,G_MODE_BITS,mode/config bits controlling duty algorithm
+0x0B44,G_RUN_TIMER,state-machine timer
+0x0B4A,G_RETRY_OR_BLINK_LIMIT,5 or 200 based on output-on state
+0x0B50,G_POWER_TARGET,main duty/power target
+0x0B52,G_ENVELOPE_SCALE,sine table amplitude scale
+0x0B54,G_DUTY_LIMIT,clamp used in PWM ISR
+0x0B6E,G_LINE_ESTIMATE,line/period estimate from ADCBUF2/3 loop
+0x0B72,G_SOFTSTART_DUTY,soft-start duty clamp
+0x0B76,G_PWM_PERIOD_CODE,host/current period code; clamped 0x6C..0x94
+0x0BC8,G_STATUS_FLAGS,status/command flags; UART-accessible window base
+0x0BE8,G_FAULT_FLAGS,fault/inhibit flags
+0x0BF0,G_HOST_SETPOINT,host setpoint used by cmd 0x28
+0x0BF2,G_HOST_DELAY,"derived delay/blanking value, min 0x1E"
+0x0BF4,G_HOST_LIMIT,"host limit/code, initial 0x80"
+0x0BF6,G_UART_STATE,UART RX state
+0x0BFA,G_UART_ADDR,UART command address
+0x0C0C,G_COMM_FLAGS,UART comm flags
+0x0C0E,G_PWM_PERIOD_REF,"period reference/ramp, initial 0x6E20"
+0x0C10,G_PWM_PERIOD_TARGET,period target selected by operating region
+0x0C12,G_PWM_PERIOD_ACTIVE,active/ramped PWM period
+0x0C26,G_CONTROL_FLAGS,"control flags, input OK/PWM active/range"
+0x0C28,G_FILT0_PTR,filter descriptor 0 pointer
+0x0C32,G_FILT1_PTR,filter descriptor 1 pointer
+0x0C4E,G_ADC3_SAMPLE,ADCBUF3 sample
+0x0C58,G_OUTPUT_GATE_FLAGS,output gate latch
+0x0C64,G_DELAY_TICKS,delay counter used by wait_ticks
+0x0C76,G_CONTROL_FLAGS2,secondary control flags

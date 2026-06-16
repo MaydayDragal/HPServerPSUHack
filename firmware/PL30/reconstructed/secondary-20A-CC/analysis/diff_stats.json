@@ -1,0 +1,31 @@
+{
+  "stock_program_words": 22016,
+  "modified_program_words": 22016,
+  "program_memory_word_differences": 6,
+  "program_memory_diff_addresses": [
+    "0x3348",
+    "0x3446",
+    "0x39B4",
+    "0x8F48",
+    "0x9046",
+    "0x95B4"
+  ],
+  "decoded_hex_bytes_stock": 88100,
+  "decoded_hex_bytes_modified": 88100,
+  "decoded_hex_byte_differences": 14,
+  "config_bit_differences": 0,
+  "stock_output_float_bits": "0x46C3EF9E",
+  "modified_output_float_bits": "0x46E8EF9E",
+  "stock_output_float": 25079.80859375,
+  "modified_output_float": 29815.80859375,
+  "output_float_ratio": 1.1888371668506366,
+  "output_float_percent_change": 18.883716685063657,
+  "vout_threshold_stock_counts": 880,
+  "vout_threshold_modified_counts": 946,
+  "vout_threshold_percent_change": 7.499999999999996,
+  "profile_e50_stock": 21777,
+  "profile_e50_modified": 4096,
+  "profile_e50_ratio": 0.18808835009413602,
+  "stock_hex_sha256": "4405d6d58e26406767ca7e2756f88d09181fe51bc56991a3cf618ecc4c659429",
+  "modified_hex_sha256": "69b170b93d8a165a6f01a07c43e316c2ba08b703fa5adaeca431ea412175d366"
+}

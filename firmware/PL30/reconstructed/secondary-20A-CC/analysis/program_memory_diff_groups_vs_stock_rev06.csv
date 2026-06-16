@@ -1,0 +1,7 @@
+start_addr,end_addr,words,image,meaning
+0x3348,0x3348,1,low,VOUT upper/protection threshold immediate changed 0x0370 -> 0x03B2 (+7.5%)
+0x3446,0x3446,1,low,Current/CC profile case-1 loop constant at 0xE50 changed 0x5511 -> 0x1000 (~18.8% of stock)
+0x39B4,0x39B4,1,low,Output-voltage/setpoint float high word changed 0x46C3EF9E -> 0x46E8EF9E (+18.88%)
+0x8F48,0x8F48,1,high,VOUT upper/protection threshold immediate changed 0x0370 -> 0x03B2 (+7.5%)
+0x9046,0x9046,1,high,Current/CC profile case-1 loop constant at 0xE50 changed 0x5511 -> 0x1000 (~18.8% of stock)
+0x95B4,0x95B4,1,high,Output-voltage/setpoint float high word changed 0x46C3EF9E -> 0x46E8EF9E (+18.88%)
